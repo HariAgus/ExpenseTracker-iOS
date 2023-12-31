@@ -29,4 +29,19 @@ extension View {
         return .zero
     }
     
+    func format(date: Date, format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: date)
+    }
+    
+    func currencyString(_ value: Double, allowDigits: Int = 2) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode =  "IDR"
+        formatter.maximumFractionDigits = allowDigits
+        
+        return formatter.string(from: .init(value: value)) ?? ""
+    }
+    
 }

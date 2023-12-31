@@ -32,3 +32,16 @@ struct Transaction : Identifiable {
     }
     
 }
+
+// Sample Transaction for UI Building
+var sampleTransaction: [Transaction] = [
+    .init(title: "Gajian", remarks: "PT. Berkah Indonesia", amount: 3000, dateAdded: .now, category: .income, tintColor: tints.randomElement()!),
+    .init(title: "Umraah", remarks: "El-Tartil", amount: 7000, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!),
+    .init(title: "Travelling", remarks: "Bali", amount: 2000, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!),
+    .init(title: "Setup PC", remarks: "Gaming", amount: 1000, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!)
+]
+
+func removeTransaction(with transactionId: String) {
+    guard let index = sampleTransaction.firstIndex(where: {$0.id.uuidString == transactionId}) else { return }
+    sampleTransaction.remove(at: index)
+}
