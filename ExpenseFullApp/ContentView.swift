@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     // Visibiliry Status
-    @AppStorage("isFirstTime") private var isFirstTime: Bool = true
+    @AppStorage("isFirstTime") private var isFirstTime: Bool = false
     
     // Active Tab
     @State private var activeTab: Tab = .recents

@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum Tab: String {
+    
     case recents = "Recents"
     case search = "Filter"
     case charts = "Charts"

@@ -23,6 +23,7 @@
 		E0573BB12B2F6FDD000C335F /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0573BB02B2F6FDD000C335F /* Graphs.swift */; };
 		E0573BB32B2F6FE9000C335F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0573BB22B2F6FE9000C335F /* Settings.swift */; };
 		E0573BB52B2F7220000C335F /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0573BB42B2F7220000C335F /* View+Extension.swift */; };
+		E06371272BB4AFA000F0B406 /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06371262BB4AFA000F0B406 /* ChartModel.swift */; };
 		E06929562B4007F900DB93D0 /* TransactionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06929552B4007F900DB93D0 /* TransactionCardView.swift */; };
 		E0E568B72B3EAEA000162B19 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E568B62B3EAEA000162B19 /* Date+Extension.swift */; };
 		E0E568BA2B3EB23F00162B19 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E568B92B3EB23F00162B19 /* CardView.swift */; };
@@ -46,6 +47,7 @@
 		E0573BB02B2F6FDD000C335F /* Graphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		E0573BB22B2F6FE9000C335F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E0573BB42B2F7220000C335F /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		E06371262BB4AFA000F0B406 /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
 		E06929552B4007F900DB93D0 /* TransactionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCardView.swift; sourceTree = "<group>"; };
 		E0E568B62B3EAEA000162B19 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		E0E568B92B3EB23F00162B19 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				E0573BA52B2F6CC5000C335F /* Category.swift */,
 				E0573BA72B2F6D0F000C335F /* Transaction.swift */,
 				E0573BA92B2F6E41000C335F /* TintColor.swift */,
+				E06371262BB4AFA000F0B406 /* ChartModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				E0573BAD2B2F6FA9000C335F /* Recents.swift in Sources */,
 				E0573BA82B2F6D0F000C335F /* Transaction.swift in Sources */,
 				E042D4582B2B577A00496A1C /* ContentView.swift in Sources */,
+				E06371272BB4AFA000F0B406 /* ChartModel.swift in Sources */,
 				E0E568BA2B3EB23F00162B19 /* CardView.swift in Sources */,
 				E039EA8A2B4126B3008F1E4D /* DateFilterView.swift in Sources */,
 				E042D4662B2B584600496A1C /* IntroScreen.swift in Sources */,
