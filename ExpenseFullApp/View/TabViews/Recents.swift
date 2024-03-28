@@ -62,9 +62,13 @@ struct Recents: View {
                                     TransactionCardView(transaction: transaction)
                                 }
                                 .buttonStyle(.plain)
-                            }
-                            .onDelete { indexSet in
-                                print("Test Delete")
+                                .contextMenu {
+                                    Button {
+                                        context.delete(transaction)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                }
                             }
                         } header: {
                             HeaderView(size)
@@ -89,7 +93,6 @@ struct Recents: View {
                 }
             }
             .animation(.spring(), value: showFilterView)
-            .listStyle(InsetListStyle())
         }
     }
     
