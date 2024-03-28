@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
+@available(iOS 17, *)
 struct Recents: View {
+    
+    @Environment(\.modelContext) private var context
     
     // User properties
     @AppStorage("userName") private var userName: String = ""
@@ -18,10 +22,9 @@ struct Recents: View {
     @State private var showFilterView: Bool = false
     @State private var selectedCategory: Category = .expense
     
-    // @ObservedObject var transactionData = TransactionData()
-    
     // For animation
     @Namespace private var animation
+    @Query(sort: [SortDescriptor(\Transaction.dateAdded, order: .reverse)], animation: .snappy) private var transactions: [Transaction]
     
     var body: some View {
         GeometryReader {
@@ -46,44 +49,25 @@ struct Recents: View {
                             
                             // Card View
                             CardView(income: 500000, expense: 250000)
-                    
+                            
                             // Custom Segemented Control
                             CustomSegmentedControl()
                                 .padding(.bottom, 10)
                             
                             // Items
-                            ForEach(sampleTransaction.filter({ $0.category == selectedCategory.rawValue })) { transaction in
-                                
-                                TransactionCardView(transaction: transaction)
-                                    .contextMenu {
-                                        Button {
-                                            removeTransaction(with: transaction.id.uuidString)
-                                        } label: {
-                                            Label("Delete", systemImage: "trash")
-                                        }
-                                    }
-                                    .swipeActions(edge: .leading, content: {
-                                        Button(role: .destructive) {
-                                            withAnimation(.linear(duration: 0.4)) {
-                                                removeTransaction(with: transaction.id.uuidString)
-                                            }
-                                        } label: {
-                                            Label("Delete", systemImage: "trash")
-                                        }
-                                    })
-                                    .tint(.red)
+                            ForEach(transactions) { transaction in
+                                NavigationLink {
+                                    NewExpenseView(editTransaction: transaction)
+                                } label: {
+                                    TransactionCardView(transaction: transaction)
+                                }
+                                .buttonStyle(.plain)
                             }
                             .onDelete { indexSet in
-                                // Handle deletion when user swipes and taps delete
-                                let indicesToDelete = indexSet.map { $0 }
-                                for index in indicesToDelete {
-                                    let transaction = sampleTransaction[index]
-                                    removeTransaction(with: transaction.id.uuidString)
-                                }
+                                print("Test Delete")
                             }
-
                         } header: {
-                             HeaderView(size)
+                            HeaderView(size)
                         }
                     }
                     .padding(15)
@@ -105,6 +89,7 @@ struct Recents: View {
                 }
             }
             .animation(.spring(), value: showFilterView)
+            .listStyle(InsetListStyle())
         }
     }
     
@@ -126,7 +111,7 @@ struct Recents: View {
             Spacer(minLength: 0)
             
             NavigationLink {
-                
+                NewExpenseView()
             } label: {
                 Image(systemName: "plus")
                     .font(.title3)
@@ -139,16 +124,16 @@ struct Recents: View {
             }
         }
         .padding(.bottom, 5)
-//        .background {
-//            VStack(spacing: 0) {
-//                Rectangle()
-//                    .fill(.ultraThinMaterial)
-//
-//                Divider()
-//            }
-//            .padding(.horizontal, -15)
-//            .padding(.top, -(safeArea.top + 15))
-//        }
+        .background {
+            VStack(spacing: 0) {
+                Rectangle()
+                    .fill(.ultraThinMaterial)
+                
+                Divider()
+            }
+            .padding(.horizontal, -15)
+            .padding(.top, -(safeArea.top + 15))
+        }
         
     }
     
@@ -177,9 +162,10 @@ struct Recents: View {
         .background(Capsule().fill(.gray.opacity(0.15)))
         .padding(.top, 8)
     }
- 
+    
 }
 
+@available(iOS 17.0, *)
 struct Recents_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

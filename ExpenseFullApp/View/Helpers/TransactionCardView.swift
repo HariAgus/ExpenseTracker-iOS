@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+@available(iOS 17, *)
 struct TransactionCardView: View {
+    @Environment(\.modelContext) private var context
     var transaction: Transaction
     
     var body: some View {
@@ -45,8 +47,7 @@ struct TransactionCardView: View {
     }
 }
 
-struct TransactionCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        TransactionCardView(transaction: sampleTransaction[0])
-    }
+@available(iOS 17, *)
+#Preview {
+    ContentView()
 }

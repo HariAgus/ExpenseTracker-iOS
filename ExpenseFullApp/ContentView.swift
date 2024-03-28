@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 17.0, *)
 struct ContentView: View {
     
     // Visibiliry Status
@@ -49,6 +50,7 @@ struct ContentView: View {
     }
 }
 
+@available(iOS 17.0, *)
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

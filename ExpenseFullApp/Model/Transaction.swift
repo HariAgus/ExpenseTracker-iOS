@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct Transaction : Identifiable {
-    let id: UUID = .init()
+@available(iOS 17, *)
+@Model
+class Transaction {
     // Properties
     var title: String
     var remarks: String
@@ -26,22 +28,24 @@ struct Transaction : Identifiable {
         self.tintColor = tintColor.color
     }
     
-    // Extracting Color value from tintColor String
+    @Transient
     var color: Color {
         return tints.first(where: { $0.color == tintColor})?.value ?? appTint
     }
     
+    @Transient
+    var tint: TintColor? {
+        return tints.first(where: { $0.color == tintColor })
+    }
+    
+    @Transient
+    var rawCategory: Category? {
+        return Category.allCases.first(where: { category == $0.rawValue })
+    }
+    
 }
 
-// Sample Transaction for UI Building
-var sampleTransaction: [Transaction] = [
-    .init(title: "Gajian", remarks: "PT. Berkah Indonesia", amount: 3000, dateAdded: .now, category: .income, tintColor: tints.randomElement()!),
-    .init(title: "Umraah", remarks: "El-Tartil", amount: 7000, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!),
-    .init(title: "Travelling", remarks: "Bali", amount: 2000, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!),
-    .init(title: "Setup PC", remarks: "Gaming", amount: 1000, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!)
-]
-
-func removeTransaction(with transactionId: String) {
-    guard let index = sampleTransaction.firstIndex(where: {$0.id.uuidString == transactionId}) else { return }
-    sampleTransaction.remove(at: index)
+@available(iOS 17, *)
+func removeTransaction(transaction: Transaction) {
+    
 }
