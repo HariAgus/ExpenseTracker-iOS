@@ -20,7 +20,7 @@ struct Recents: View {
     @State private var startDate: Date = .now.startOfMonth
     @State private var endDate: Date = .now.endOfMonth
     @State private var showFilterView: Bool = false
-    @State private var selectedCategory: Category = .expense
+    @State private var selectedCategory: Category = .income
     
     // For animation
     @Namespace private var animation
@@ -55,7 +55,10 @@ struct Recents: View {
                                 .padding(.bottom, 10)
                             
                             // Items
-                            ForEach(transactions) { transaction in
+                            let filteredTransaction = transactions.filter { transaction in
+                                return transaction.category == selectedCategory.rawValue
+                            }
+                            ForEach(filteredTransaction) { transaction in
                                 NavigationLink {
                                     NewExpenseView(editTransaction: transaction)
                                 } label: {
