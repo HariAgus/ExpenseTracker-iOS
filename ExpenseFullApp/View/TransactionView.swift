@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 17, *)
-struct NewExpenseView: View {
+struct TransactionView: View {
     
     // Env Properties
     @Environment(\.modelContext) private var context
@@ -184,9 +184,9 @@ struct NewExpenseView: View {
     }
 }
 
-//@available(iOS 17, *)
-//#Preview {
-//    NavigationStack {
-//        NewExpenseView()
-//    }
-//}
+@available(iOS 17, *)
+#Preview {
+    NavigationStack {
+        TransactionView()
+    }
+}
