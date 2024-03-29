@@ -24,7 +24,6 @@ struct Recents: View {
     
     // For animation
     @Namespace private var animation
-    @Query(sort: [SortDescriptor(\Transaction.dateAdded, order: .reverse)], animation: .snappy) private var transactions: [Transaction]
     
     var body: some View {
         GeometryReader {
@@ -47,29 +46,32 @@ struct Recents: View {
                             }
                             .hSpacing(.leading)
                             
-                            // Card View
-                            CardView(income: 500000, expense: 250000)
-                            
-                            // Custom Segemented Control
-                            CustomSegmentedControl()
-                                .padding(.bottom, 10)
-                            
-                            // Items
-                            let filteredTransaction = transactions.filter { transaction in
-                                return transaction.category == selectedCategory.rawValue
-                            }
-                            ForEach(filteredTransaction) { transaction in
-                                NavigationLink {
-                                    TransactionView(editTransaction: transaction)
-                                } label: {
-                                    TransactionCardView(transaction: transaction)
+                            FilterTransactionsView(startDate: startDate, endDate: endDate) { transactions in
+                                // Card View
+                                CardView(
+                                    income: total(transactions, category: .income),
+                                    expense: total(transactions, category: .expense)
+                                )
+                                
+                                // Custom Segemented Control
+                                CustomSegmentedControl()
+                                    .padding(.bottom, 10)
+                                
+                                // Items
+                                let filteredTransaction = transactions.filter { transaction in
+                                    return transaction.category == selectedCategory.rawValue
                                 }
-                                .buttonStyle(.plain)
-                                .contextMenu {
-                                    Button {
-                                        context.delete(transaction)
-                                    } label: {
-                                        Label("Delete", systemImage: "trash")
+                                ForEach(filteredTransaction) { transaction in
+                                    NavigationLink(value: transaction) {
+                                        TransactionCardView(transaction: transaction)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .contextMenu {
+                                        Button {
+                                            context.delete(transaction)
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
                                     }
                                 }
                             }
@@ -82,6 +84,9 @@ struct Recents: View {
                 .background(.gray.opacity(0.15))
                 .blur(radius: showFilterView ? 8 : 0)
                 .disabled(showFilterView)
+                .navigationDestination(for: Transaction.self) { transaction in
+                    TransactionView(editTransaction: transaction)
+                }
             }
             .overlay {
                 if showFilterView {
