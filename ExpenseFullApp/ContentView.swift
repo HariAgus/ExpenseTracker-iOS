@@ -18,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $activeTab) {
-            Recents()
+            Dashboard()
                 .tag(Tab.recents)
                 .tabItem {
                     Tab.recents.tabContent

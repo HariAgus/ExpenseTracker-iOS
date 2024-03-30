@@ -9,7 +9,7 @@ import SwiftUI
 
 enum Tab: String {
     
-    case recents = "Recents"
+    case recents = "Dashboard"
     case search = "Filter"
     case charts = "Charts"
     case settings = "Settings"
@@ -18,7 +18,7 @@ enum Tab: String {
     var tabContent: some View {
         switch self {
         case .recents:
-            Image(systemName: "calendar")
+            Image(systemName: "house")
             Text(self.rawValue)
         case .search:
             Image(systemName: "magnifyingglass")

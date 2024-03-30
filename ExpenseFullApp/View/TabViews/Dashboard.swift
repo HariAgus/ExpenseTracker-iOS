@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @available(iOS 17, *)
-struct Recents: View {
+struct Dashboard: View {
     
     @Environment(\.modelContext) private var context
     
@@ -58,10 +58,7 @@ struct Recents: View {
                                     .padding(.bottom, 10)
                                 
                                 // Items
-                                let filteredTransaction = transactions.filter { transaction in
-                                    return transaction.category == selectedCategory.rawValue
-                                }
-                                ForEach(filteredTransaction) { transaction in
+                                ForEach(transactions.filter({ $0.category == selectedCategory.rawValue })) { transaction in
                                     NavigationLink(value: transaction) {
                                         TransactionCardView(transaction: transaction)
                                     }
