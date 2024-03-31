@@ -17,20 +17,40 @@ struct Graphs: View {
     @State private var chartGroups: [ChartGroup] = []
     
     var body: some View {
-        ScrollView(.vertical) {
-            LazyVStack(spacing: 10) {
-                ChartView()
-                    .frame(height: 200)
-                    .padding(10)
-                    .padding(.top,10)
-                    .background(.background, in: .rect(cornerRadius: 10))
+        NavigationStack {
+            ScrollView(.vertical) {
+                LazyVStack(spacing: 10) {
+                    ChartView()
+                        .frame(height: 200)
+                        .padding(10)
+                        .padding(.top,10)
+                        .background(.background, in: .rect(cornerRadius: 10))
+                    
+                    ForEach(chartGroups) { group in
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(format(date: group.date, format: "MMM yy"))
+                                .font(.caption)
+                                .foregroundStyle(.gray)
+                                .hSpacing(.leading)
+                                                
+                            NavigationLink {
+                                 GroupListOfExpenses(month: group.date)
+                            } label: {
+                                CardView(income: group.totalIncome, expense: group.totalExpense)
+                            }
+                            .onTapGesture {
+                                print("Item Clicked!")
+                            }
+                        }
+                    }
+                }
+                .padding(15)
             }
-            .padding(15)
-        }
-        .navigationTitle("Graphs")
-        .background(.gray.opacity(0.15))
-        .onAppear {
-            createChartGroup()
+            .navigationTitle("Graphs")
+            .background(.gray.opacity(0.15))
+            .onAppear {
+                createChartGroup()
+            }
         }
     }
     
@@ -53,6 +73,17 @@ struct Graphs: View {
         .chartScrollableAxes(.horizontal)
         .chartXVisibleDomain(length: 4)
         .chartLegend(position: .bottom, alignment: .trailing)
+        .chartYAxis {
+            AxisMarks(position: .leading) { value in
+                let doubleValue = value.as(Double.self) ?? 0
+                
+                AxisGridLine()
+                AxisTick()
+                AxisValueLabel {
+                    Text(axisLabel(doubleValue))
+                }
+            }
+        }
         .chartForegroundStyleScale(range: [Color.green.gradient, Color.red.gradient])
     }
     
@@ -100,7 +131,15 @@ struct Graphs: View {
             }
         }
     }
+    
+    func axisLabel(_ value: Double) -> String {
+        let intValue = Int(value)
+        let kValue = Int(value) / 1000
+        
+        return intValue < 1000 ? "\(intValue)" : "\(kValue)K"
+    }
 }
+
 
 @available(iOS 17.0, *)
 struct Graphs_Previews: PreviewProvider {

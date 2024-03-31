@@ -29,6 +29,7 @@
 		E0E568B72B3EAEA000162B19 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E568B62B3EAEA000162B19 /* Date+Extension.swift */; };
 		E0E568BA2B3EB23F00162B19 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E568B92B3EB23F00162B19 /* CardView.swift */; };
 		E0E7E9162BB6A5D8006EC914 /* FilterTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E7E9152BB6A5D8006EC914 /* FilterTransactionsView.swift */; };
+		E0E7E9182BB93F78006EC914 /* GroupListOfExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E7E9172BB93F78006EC914 /* GroupListOfExpenses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		E0E568B62B3EAEA000162B19 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		E0E568B92B3EB23F00162B19 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E0E7E9152BB6A5D8006EC914 /* FilterTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTransactionsView.swift; sourceTree = "<group>"; };
+		E0E7E9172BB93F78006EC914 /* GroupListOfExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListOfExpenses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				E06929552B4007F900DB93D0 /* TransactionCardView.swift */,
 				E039EA892B4126B3008F1E4D /* DateFilterView.swift */,
 				E0E7E9152BB6A5D8006EC914 /* FilterTransactionsView.swift */,
+				E0E7E9172BB93F78006EC914 /* GroupListOfExpenses.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				E042D4582B2B577A00496A1C /* ContentView.swift in Sources */,
 				E06371272BB4AFA000F0B406 /* ChartModel.swift in Sources */,
 				E0E568BA2B3EB23F00162B19 /* CardView.swift in Sources */,
+				E0E7E9182BB93F78006EC914 /* GroupListOfExpenses.swift in Sources */,
 				E039EA8A2B4126B3008F1E4D /* DateFilterView.swift in Sources */,
 				E042D4662B2B584600496A1C /* IntroScreen.swift in Sources */,
 				E042D46B2B2B5DE800496A1C /* Tab.swift in Sources */,

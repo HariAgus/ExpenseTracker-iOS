@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct CardView : View {
+    
     var income: Double
     var expense: Double
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
@@ -19,6 +21,7 @@ struct CardView : View {
                 HStack(spacing: 12) {
                     Text("\(currencyString(income - expense))")
                         .font(.title.bold())
+                        .foregroundStyle(Color.primary)
                     
                     Image(systemName: expense > income ? "chart.line.downtrend.xyaxis" : "chart.line.uptrend.xyaxis")
                         .font(.title3)
@@ -49,7 +52,7 @@ struct CardView : View {
                                 Text(currencyString(category == .income ? income : expense, allowDigits: 0))
                                     .font(.callout)
                                     .fontWeight(.semibold)
-                                    .foregroundStyle(.primary)
+                                    .foregroundStyle(Color.primary)
                             }
                             
                             if category == .income {
