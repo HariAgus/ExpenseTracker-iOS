@@ -9,3 +9,11 @@ Charts and Analytics: Gain valuable insights into your spending habits with inte
 - <b>Grouping and Sorting</b>: Group and sort your expenses based on various criteria to organize your financial data efficiently. Group expenses by category, date, or payment method to get a clear overview of your spending patterns.
 Customizable Settings: Tailor the app to suit your preferences with customizable settings. Adjust currency, date format, notification preferences, and more to personalize your expense tracking experience.
 - <b>Data Security</b>: Rest assured knowing that your financial data is safe and secure. The app employs robust encryption and authentication measures to protect your sensitive information.
+
+
+## Installation
+
+Clone or Download and Open it into Android Studio or other IDE
+```
+    https://github.com/HariAgus/ExpenseTracker-iOS.git
+```
