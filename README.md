@@ -17,3 +17,5 @@ Clone or Download and Open it into Android Studio or other IDE
 ```
     https://github.com/HariAgus/ExpenseTracker-iOS.git
 ```
+
+## Technology Used
