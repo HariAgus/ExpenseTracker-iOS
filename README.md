@@ -16,3 +16,6 @@
 - **Core Data**: Local data storage
 - **CloudKit**: Synchronize data to iCloud
 - **Charts**: Data visualization in graph form
+
+
+#
